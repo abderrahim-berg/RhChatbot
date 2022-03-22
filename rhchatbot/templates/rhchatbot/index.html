@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/chat.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/typing.css'%}">
+    <title>RH assistant</title>
+</head>
+<body >
+    <div class='content'></div>
+    <div class="container">
+        <div class="chatbox">
+            <div class="chatbox__support">
+                <div class="chatbox__header">
+                    <div class="chatbox__image--header">
+                        <img src="{% static 'images/image.png'%}" alt="image">
+                    </div>
+                    <div class="chatbox__content--header">
+                        <h4 class="chatbox__heading--header">Chat support</h4>
+                        <p class="chatbox__description--header">Je suis votre assistant RH et je suis intelligent ;-)</p>
+                    </div>
+                </div>
+                <div class="chatbox__messages">
+                    <div id='messages_area'>
+                        <div class="additionalInfo">
+                                C'est votre assistant RH, je vais vous fournir toute information
+                                de votre entreprise et je vais vous faciliter l'accès à ses diférents services.
+                        </div>
+                        <!-- <div class="messages__item messages__item--visitor">
+                            Can you let me talk to the support?
+                        </div>
+                        <div class="messages__item messages__item--operator">
+                            Sure!
+                        </div> -->
+                        <!-- <div class="messages__item messages__item--visitor" id='messageUser'>
+                             
+                        </div>
+                        <div class="messages__item messages__item--operator" id='messageOperator'>
+                            
+                        </div> -->
+                        <!-- <div class="messages__item messages__item--typing">
+                            <span class="messages__dot"></span>
+                            <span class="messages__dot"></span>
+                            <span class="messages__dot"></span>
+                        </div> -->
+                    </div>
+                </div>
+                <form class="chatbox__footer"   method="POST" id='post-form' autocomplete="off" >{% csrf_token %}
+                    <img src="{% static 'images/icons/emojis.svg' %}" alt="" class="icon">
+                    <img src="{% static 'images/icons/microphone.svg' %}" alt="" class="icon">
+                    <input id='qst' type="text" placeholder="Write a message..." name="inp">
+                    <button class="send-btn" alt="send-btn" type='submit' onclick="sendFunction()">
+                        <img src="{% static 'images/send.png'%}">
+                    </button>
+                    <img src="{% static 'images/icons/attachment.svg' %}" alt="" class="icon">
+                </form>
+            </div>
+            <div class="chatbox__button">
+                <button class="chatboxButton" alt="">
+           
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/chat.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    
+    $("#post-form").submit(function (e) {
+    e.preventDefault();
+    var serializedData = $(this).serialize();
+    $.ajax({
+        type: 'POST',
+        url: "{% url 'index' %}",
+        headers: {
+        'X-CSRFTOKEN': "{{ csrf_token }}",
+        },
+         data: serializedData,
+         success: function (json) {
+              
+            document.getElementById("post-form").reset();
+            $("#messageDots").remove();
+            $("#messages_area").append('<div class="messages__item messages__item--operator">'+json.answer+'</div>')
+            if ((json.answer).indexOf("lettres") > -1){$(".content").replaceWith("<div class='content'><h1>Exemples de lettres administratives:</h1><ul><li><a href='{%static 'files/Untitled1.pdf'%}' target='_blank'>Demande de demission</a></li><li><a href='{%static 'files/Untitled1.pdf'%}' target='_blank'>Demande d'un congé</a></li><li><a href='{%static 'files/Untitled1.pdf'%}' target='_blank'>Demande d'augmentation de salaire</a></li><li><a href='{%static 'files/Untitled1.pdf'%}'>Demande d'un congé</a></li><li><a href='{%static 'files/Untitled1.pdf'%}'>Demande de changement de poste</a></li></ul><span>Pour plus d'exemple visiter:</span><a href='https://www.modele-lettre-gratuit.com/' target='_blank'>modele-lettre-gratuit.com</a></div>");}
+            if ((json.answer).indexOf("réglemment") > -1){$(".content").replaceWith( "<div class='content'><h1>Réglemment intérieure de l'entreprise:</h1><h2>Loi 1.1</h2><p>Lorem ipsum dolor sit amet. Et quaerat placeat vel harum harum est optio excepturi et voluptate quod sit nesciunt dicta in quae voluptates. Ea consequuntur placeat qui fuga delectus et officia voluptas et fugiat rerum. In sequi odit qui autem nihil eum nemo expedita et labore similique qui alias quisquam ut quia ullam aut quia internos.</p><h2>loi 1.2</h2><p>Lorem ipsum dolor sit amet. Et quaerat placeat vel harum harum est optio excepturi et voluptate quod sit nesciunt dicta in quae voluptates. Ea consequuntur placeat qui fuga delectus et officia voluptas et fugiat rerum. In sequi odit qui autem nihil eum nemo expedita et labore similique qui alias quisquam ut quia ullam aut quia internos.</p></div>");}
+            if ((json.answer).indexOf("l'organigramme") > -1){$(".content").replaceWith("<div class='content'><h1>L'organigramme de l'entreprise:</h1><p>Lorem ipsum dolor sit amet. Et quaerat placeat vel harum harum est optio excepturi et voluptate quod sit nesciunt dicta in quae voluptates. Ea consequuntur placeat qui fuga delectus et officia voluptas et fugiat rerum. In sequi odit qui autem nihil eum nemo expedita et labore similique qui alias quisquam ut quia ullam aut quia internos.</p></div>?");}
+            if ((json.answer).indexOf("coordonnées") > -1){$(".content").replaceWith( "<div class='content'><h1>Les coordonnées dont vous aurez besoin:</h1><p>Lorem ipsum dolor sit amet. Et quaerat placeat vel harum harum est optio excepturi et voluptate quod sit nesciunt dicta in quae voluptates. Ea consequuntur placeat qui fuga delectus et officia voluptas et fugiat rerum. In sequi odit qui autem nihil eum nemo expedita et labore similique qui alias quisquam ut quia ullam aut quia internos.</p></div>");}
+            if ((json.answer).indexOf("l'horaire") > -1){$(".content").replaceWith("<div class='content'><h1>L'horaire du travail:</h1><p>Lorem ipsum dolor sit amet. Et quaerat placeat vel harum harum est optio excepturi et voluptate quod sit nesciunt dicta in quae voluptates. Ea consequuntur placeat qui fuga delectus et officia voluptas et fugiat rerum. In sequi odit qui autem nihil eum nemo expedita et labore similique qui alias quisquam ut quia ullam aut quia internos.</p></div>");}
+         },
+         error: function (xhr,errmsg,err) {
+              console.log(xhr.status + ":" + xhr.responseText);
+         }
+     })
+ 
+});
+function sendFunction(){
+    var inp=$('#qst').val()
+    document.getElementById("messages_area").innerHTML += 
+    '<div class="messages__item messages__item--visitor">'+inp+'</div>';
+    document.getElementById("messages_area").innerHTML +=
+    '<div id="messageDots" class="messages__item messages__item--typing" >'+
+                            '<span class="messages__dot">'+'</span>'+
+                            '<span class="messages__dot">'+'</span>'+
+                            '<span class="messages__dot">'+'</span>'+
+                        '</div>';
+ }
+    
+
+    </script>
+
+</body>
+</html>

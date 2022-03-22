@@ -1,0 +1,68 @@
+{"intents": [
+    {"tag": "salutations",
+     "patterns": ["Bonjour", "hi", "Is anyone there?", "Hello", "Good day", "Whats up","Salut","hey"],
+     "responses": ["Salut!Comment je peux vous aider?", "Ravi de vous retrouvez!Comment je peux vous aider?"],
+     "context_set": ""
+    },
+    {"tag": "AU revoir",
+     "patterns": ["cya", "See you later", "Goodbye", "I am Leaving", "Have a Good day","Au revoir","bye","thank you,bye","Merci"],
+     "responses": ["Au revoir, prend soin de vous!", "on se parle plus tard!", "Au revoir, je reste à votre disposition à tout moment!"],
+     "context_set": ""
+    },
+    {"tag": "ABSENCES",
+     "patterns": ["je vais m'absenter demain", "Je ne peux pas me deplacer au travail", "je vais être abscent", "je ne serqis pqs disponible ce matin", "je vais être abscent cette après midi"],
+     "responses": ["si vous ne pouvez pas assurer votre service, pour quelque cause que ce soit, vous devez prévenir la Direction dans les plus brefs délais. Puis-je savoir pour quelle cause?"],
+     "context_set": ""
+    },
+    {"tag": "JUSTIFICATIONS",
+     "patterns": ["je suis malade", "à cause d'une maladie", "un accident","je me sens pas bien aujourdhui"],
+     "responses": [" En cas d’absence pour maladie ou accident, vous devez avertir d’urgence la Direction de votre incapacité et fournir une justification médicale. Et sachez que  L’absence non justifiée est fautive et peut entraîner la rupture du contrat de travail dans le respect des dispositions légales et conventionnelles en vigueur.\n Si vous voulez signaler votre incapacité tapez 'signaler mon absence'"],
+     "context_set": ""
+    },
+    {"tag": "CONGES",
+     "patterns": ["est ce que je peux avoir un congé cette semaine?", "J'ai besoin d'un conge!", "je veux un conge ce mois-ci!", "est ce qu'il est possible d'avoir un congé?"],
+     "responses": ["vous disposez de 5 semaines de congés annuels, soit 30 jours, sous réserve d’une année complète de présence. Les congés devront être pris entre le 01 juin et le 31 mai.\n Si vous voulez signaler votre demande auprès de la direction tapez 'Demander un congé'"],
+     "context_set": ""
+    },
+    {"tag": "HARCELEMENT",
+     "patterns": ["je suis victime d'harcelement sexuel","je suis victime d'harcelement moral","j'ai subi de l'harcelement moral dans le travail","j'ai subi de l'harcelement sexuel dans le travail", "quelles sont les sanctions appliquées au cas d'harcelement sexuel"],
+     "responses": ["Je suis désolé d'entendre ça! Voilà ce que dit notre réglemment intérieur dans votre cas:\n 19.1 Articles L. 122-46. et L 122-49 du Code du Travail : Nul ne peut être sanctionné, licencié ou faire l’objet d’une mesure discriminatoire, directe ou indirecte, pour avoir subi ou refusé de subir :\n-les agissements de harcèlement de toute personne dont le but est d’obtenir des faveurs de nature sexuelle à son profit ou au profit d’un tiers.\n- les agissements répétés de harcèlement moral qui ont pour objet ou pour effet une dégradation des conditions de travail susceptible de porter atteinte à ses droits et à sa dignité, d’altérer sa santé physique ou mentale ou de compromettre son avenir professionnel.\n-Articles L 122-47 et L 122-50 du Code du travail : Est passible d’une sanction disciplinaire tout salarié ayant procédé aux agissements définis à l’article L 122-46 ou L 122-49.\n-19.2 Chacun est personnellement tenu d’informer la direction sans délai de tout agissement qu’il aurait constaté à ce titre.\nJ'éspère que cela vous a aidé. Pour déclarer auprès de lq direction tapez 'Déclarer de l'harcelement'"],
+     "context_set": ""
+    },
+    {"tag": "HORAIRE",
+        "patterns": ["Quel est l'horaire du travail?","Quel est votre emploi du temps","Combien d'heure je doit travailler","est-ce qu'on travail le week-end?","on s'arrete à quelle heure?"],
+        "responses": ["Volà l'horaire du travail ! "],
+        "context_set": ""
+       },
+    {"tag": "ORGANIGRAMME",
+    "patterns": ["quel est le chef de notre département?","quel est mon chef?","quel est le responsable du département?","quel est le responsable RH resources humaines?"],
+    "responses": ["vous vérifier l'organigramme de notre entreprise ! "],
+    "context_set": ""
+    },
+    {"tag": "TELETRAVAIL",
+    "patterns": ["Le travail à domicile est autorisé ou non ?","est ce que le teletravail est autorisé?","Quelles sont les conditions pour travailler à domocile? "],
+    "responses": ["Les employés ne sont autorisés à travailler à domicile que si leurs fonctions le permettent. Par exemple, les personnes qui sont obligées d'entrer en contact physique direct avec les clients ne sont pas éligibles au télétravail dans le cadre de cette politique.les employés qui effectuent la plupart de leur travail sur un ordinateur peuvent parfois travailler hors site.Toutefois,on peut citer des raisons qui pourraient exiger le télétravail sans s'y limiter, et qui comprennent :Parentalité\nMauvais temps\nUrgences\nDes raisons médicales\nTrajet trop long"],
+        "context_set": ""
+    },
+    {"tag": "VESTIMENTAIRE",
+    "patterns": ["Quel est le code vestimentaire de notre département ?"],
+    "responses": ["Les hommes doivent porter un costume cravate et une chemise, ainsi que de chaussures élégantes. Pour les femmes, une tenue professionnelle signifie un tailleur ou un tailleur pantalon, assorti d’une blouse unie et d’escarpins fermés. En cas de doute, optez pour une présentation conservatrice!"],
+    "context_set": ""
+    },
+    {"tag": "COMMUNICATION",
+    "patterns": ["Comment préférez-vous communiquer : e-mail, messagerie instantanée, SMS, téléphone, en personne ?","Comment interagissons-nous avec les autres deparetements de l'entreprise?","quel est le numéro de téléphone du chef","quelle est l'adresse email du chef?","les cordonnées de la DRH?"],
+    "responses": ["Dans notre entreprise nous accordons pour utiliser tous les canaux de disscussion possibles,Si votre demande est vraiment urgente, téléphonez directement à  votre interlocuteur.Si vous avez besoin d’une réponse dans les 2 heures, envoyez un SMS en précisant que vous avez une demande urgente et que vous souhaiteriez que votre interlocuteur vous rappelle dès qu’il a deux minutes.si le cas n'est urgente et vous n'avez pas besoin de la reponse le jour meme, veuiellez considerer d'envoyer un email. Vérifiez la liste des coordonnées dont vous avez accès!"],
+    "context_set": ""
+    },
+    {"tag": "LETTRES",
+        "patterns": ["lettre de Demande de changement de poste pour un salarié","Un exemple de lettre de demande d'une augmentation de salaire","Un exemple d'une lettre de démission","Un modèle d'une lettre de démission","Un modèle d'une Lettre de motivation"],
+        "responses": ["Je vous affiche un banque d'exemple de lettres administratives. Cherchez ce que vous convient"],
+        "context_set": ""
+        },
+    {"tag": "REGLEMMENT",
+        "patterns": ["Qulle le reglemment intérieur de l'entreprise","Quelle est la loi interne de l'entreprise"],
+        "responses": ["Voici notre réglemment intérieur. Veuillez le lire attentivement!"],
+        "context_set": ""
+        }
+]
+}
